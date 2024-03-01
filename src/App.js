@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import HomePage from './HomePage';
 import Signup from './Signup';
 import Signin from './Signin';
+import StreamDetail from './StreamDetail';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signin" element={<Signin />} />
+                    <Route path="/stream/:id" element={<StreamDetail />} /> {/* Use :id parameter */}
                 </Routes>
             </div>
         </Router>
