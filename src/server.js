@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB Atlas
-const mongoURI = 'mongodb+srv://nitinchowdary2003:nitin2003@cluster0.z83jqhw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = 'mongodb+srv://nitinchowdary2003:<password>@cluster0.z83jqhw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Create a MongoDB schema and model
 const userSchema = new mongoose.Schema({
