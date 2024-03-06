@@ -13,20 +13,35 @@ function Signup() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic
+
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Handle successful signup, e.g., redirect to a confirmation page
+        console.log('User created successfully');
+      } else {
+        // Handle signup failure
+        console.error('Failed to create user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
     <div className="signup-container">
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-        {/* Add a Link to the Signin page */}
-        <p>Already have an account? <Link to="/signin">Sign in here</Link></p>
+        {/* ... (your existing form inputs) */}
         <button type="submit">Signup</button>
       </form>
     </div>

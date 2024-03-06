@@ -1,6 +1,6 @@
 // Navbar.js
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom'; // Import Link
 import './Navbar.css';
 import logo from './logo.png';
 
@@ -26,7 +26,8 @@ function Navbar() {
                     <div className="line"></div>
                 </div>
                 <div className="logo">
-                    <a href="sample.html"><img style={{ height: '50%', width: '75%' }} src={logo} alt="Logo" /></a>
+                    {/* Use Link instead of a tag */}
+                    <Link to="/"><img style={{ height: '50%', width: '75%' }} src={logo} alt="Logo" /></Link>
                 </div>
                 <div className={`nav-links ${showMenu ? 'active' : ''}`}>
                     <ul>
@@ -42,12 +43,11 @@ function Navbar() {
                 </div>
                 <div className="auth-buttons">
                     <button onClick={() => navigate('/signin')}>Sign In/Sign Up</button>
-        
                 </div>
-
             </nav>
         </div>
     );
 }
 
 export default Navbar;
+
