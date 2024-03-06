@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB Atlas
-const mongoURI = 'mongodb+srv://nitinchowdary2003:<password>@cluster0.z83jqhw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = 'mongodb+srv://nitinchowdary2003:nitin2003@cluster0.z83jqhw.mongodb.net/login?retryWrites=true&w=majority&appName=Cluster0';
+
 
 // Create a MongoDB schema and model
 const userSchema = new mongoose.Schema({
@@ -17,7 +19,8 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// Middleware for parsing JSON data
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
 // Signup endpoint
@@ -37,7 +40,7 @@ app.post('/api/signup', async (req, res) => {
 
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
-    console.error(error);
+    console.error('MongoDB Error:', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });

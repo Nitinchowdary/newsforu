@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -7,7 +7,8 @@ function Signup() {
     email: '',
     password: '',
   });
-
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -15,7 +16,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('Submitting form');
     try {
       const response = await fetch('/api/signup', {
         method: 'POST',
@@ -26,10 +27,9 @@ function Signup() {
       });
 
       if (response.ok) {
-        // Handle successful signup, e.g., redirect to a confirmation page
         console.log('User created successfully');
+        navigate('/signin'); // Navigate to the signin page after successful signup
       } else {
-        // Handle signup failure
         console.error('Failed to create user');
       }
     } catch (error) {
@@ -41,9 +41,44 @@ function Signup() {
     <div className="signup-container">
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        {/* ... (your existing form inputs) */}
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button type="submit">Signup</button>
       </form>
+      <p>
+        Already have an account? <Link to="/signin">Signin here</Link>
+      </p>
     </div>
   );
 }
