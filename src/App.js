@@ -11,12 +11,12 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Navbar />
+            <Navbar/>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signin" element={<Signin />} />
-                    <Route path="/stream/:id" element={<StreamDetail />} /> {/* Use :id parameter */}
+                    <Route path="/stream/:id" element={<StreamDetail />} />
                 </Routes>
             </div>
         </Router>

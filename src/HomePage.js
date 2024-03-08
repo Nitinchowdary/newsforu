@@ -12,6 +12,7 @@ import CrimesImage from './images/crimes.jpg';
 import WeatherImage from './images/weather.jpg';
 import TechnologyImage from './images/technology.jpg';
 import SpaceImage from './images/space.jpg';
+import CategoryStrip from './CategoryStrip'; // Import the CategoryStrip component
 
 function HomePage() {
     const streams = [
@@ -29,6 +30,10 @@ function HomePage() {
 
     return (
         <div className="homepage">
+            <p className='head'>NEWS FOR U</p>
+            <hr/>
+            <CategoryStrip /> {/* Display the CategoryStrip component */}
+            <hr/>
             <h2>Streams</h2>
             <div className="streams-container">
                 {streams.map(stream => (

@@ -1,0 +1,50 @@
+/* CategoryStrip.css */
+.category-strip {
+  overflow-x: scroll;
+  max-width: 100%;
+  white-space: nowrap;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Firefox */
+}
+
+.category-container {
+  display: inline-flex; /* Change from 'flex' to 'inline-flex' */
+}
+
+.category-link {
+  margin-right: 20px;
+  text-decoration: none;
+  color:black;
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 40px; /* Ensure the line height matches the container height */
+}
+
+.category-strip::-webkit-scrollbar {
+  width: 12px;
+}
+
+.category-strip::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.category-strip::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+  
+  .category-link:hover {
+    background-color: #eee;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .category-strip {
+      flex-direction: column;
+    }
+  
+    .category-link {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
