@@ -22,7 +22,6 @@ const User = mongoose.model('User', userSchema);
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
 // Signup endpoint
 app.post('/api/signup', async (req, res) => {
   try {
