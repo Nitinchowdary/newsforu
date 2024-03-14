@@ -9,6 +9,18 @@ const PORT = process.env.PORT || 3001;
 // Connect to MongoDB Atlas
 const mongoURI = 'mongodb+srv://nitinchowdary2003:nitin2003@cluster0.z83jqhw.mongodb.net/login?retryWrites=true&w=majority&appName=Cluster0';
 
+// Connect to MongoDB Atlas with increased timeout
+mongoose.connect(mongoURI, {
+  serverSelectionTimeoutMS: 5000, // Increase the server selection timeout to 5 seconds
+  socketTimeoutMS: 45000, // Increase the socket timeout to 45 seconds
+})
+.then(() => {
+  console.log('MongoDB connected successfully');
+})
+.catch((error) => {
+  console.error('MongoDB connection error:', error);
+});
+
 
 // Create a MongoDB schema and model
 const userSchema = new mongoose.Schema({
@@ -23,7 +35,7 @@ const User = mongoose.model('User', userSchema);
 app.use(cors());
 app.use(bodyParser.json());
 // Signup endpoint
-app.post('/api/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 

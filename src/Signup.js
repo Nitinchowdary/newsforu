@@ -18,7 +18,7 @@ function Signup() {
     e.preventDefault();
     console.log('Submitting form');
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('http://localhost:3001/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
