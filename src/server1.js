@@ -7,6 +7,18 @@ const PORT = 3002;
 
 const mongoURI = 'mongodb+srv://nitinchowdary2003:nitin2003@cluster0.z83jqhw.mongodb.net/login?retryWrites=true&w=majority&appName=Cluster0';
 
+// Connect to MongoDB Atlas with increased timeout
+mongoose.connect(mongoURI, {
+  serverSelectionTimeoutMS: 5000, // Increase the server selection timeout to 5 seconds
+  socketTimeoutMS: 45000, // Increase the socket timeout to 45 seconds
+})
+.then(() => {
+  console.log('MongoDB connected successfully');
+})
+.catch((error) => {
+  console.error('MongoDB connection error:', error);
+});
+
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
