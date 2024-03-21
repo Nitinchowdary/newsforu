@@ -16,33 +16,32 @@ import CategoryStrip from './CategoryStrip'; // Import the CategoryStrip compone
 
 function HomePage() {
     const streams = [
-        { id: 1, type: 'politics', title: 'Politics News 1', image: PoliticsImage },
-        { id: 2, type: 'Business', title: 'Business News 1', image: BusinessImage },
-        { id: 3, type: 'Education', title: 'Education News 1', image: EducationImage },
-        { id: 4, type: 'Health', title: 'Health News 1', image: HealthImage },
-        { id: 5, type: 'Sports', title: 'Sports News 1', image: SportsImage },
-        { id: 6, type: 'Entertainment', title: 'Entertainment News 1', image: EntertainmentImage },
-        { id: 7, type: 'Crimes', title: 'Crimes News 1', image: CrimesImage },
-        { id: 8, type: 'Weather', title: 'Weather News 1', image: WeatherImage },
-        { id: 9, type: 'Technology', title: 'Technology News 1', image: TechnologyImage },
-        { id: 10, type: 'Space and Astronomy', title: 'Space and Astronomy News 1', image: SpaceImage },
+        { id:'politics', title: 'Politics News 1', image: PoliticsImage },
+        { id:'Business', title: 'Business News 1', image: BusinessImage },
+        { id:'Education', title: 'Education News 1', image: EducationImage },
+        { id:'Health', title: 'Health News 1', image: HealthImage },
+        { id:'Sports', title: 'Sports News 1', image: SportsImage },
+        { id: 'Entertainment', title: 'Entertainment News 1', image: EntertainmentImage },
+        { id:'Crimes', title: 'Crimes News 1', image: CrimesImage },
+        { id:'Weather', title: 'Weather News 1', image: WeatherImage },
+        { id:'Technology', title: 'Technology News 1', image: TechnologyImage },
+        { id:'Space and Astronomy', title: 'Space and Astronomy News 1', image: SpaceImage },
     ];
 
     return (
         <div className="homepage">
             <p className='head'>NEWS FOR U</p>
             <hr/>
-            <CategoryStrip /> {/* Display the CategoryStrip component */}
+            <CategoryStrip />{/* Display the CategoryStrip component */}
             <hr/>
             <h2>Streams</h2>
             <div className="streams-container">
                 {streams.map(stream => (
-                     <Link to={`/stream/${stream.type}`} key={stream.type} className="stream-item">
-                     <img src={stream.image} alt={stream.title} />
-                     <div className="stream-content">
-                         <h3>{stream.title}</h3>
-                         {/* Remove other content */}
-                     </div>
+                    <Link to={`/stream/${stream.id}`} key={stream.id} className="stream-item">
+                        <img src={stream.image} alt={stream.title} />
+                        <div className="stream-content">
+                            <h3>{stream.title}</h3>
+                        </div>
                     </Link>
                 ))}
             </div>
